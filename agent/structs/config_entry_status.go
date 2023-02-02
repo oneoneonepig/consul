@@ -37,7 +37,7 @@ type Status struct {
 // respect to each of those resources.
 type Condition struct {
 	// Status is a value from a bounded set of statuses that an object might have
-	Status string
+	Status ConditionStatus
 	// Reason is a value from a bounded set of reasons for a given status
 	Reason string
 	// Message is a message that gives more detailed information about
@@ -49,3 +49,12 @@ type Condition struct {
 	// LastTransitionTime is the time at which this Condition was created
 	LastTransitionTime *time.Time
 }
+
+// ConditionStatus is a bounded set of statuses that an object might have
+type ConditionStatus string
+
+const (
+	ConditionStatusTrue    ConditionStatus = "True"
+	ConditionStatusFalse   ConditionStatus = "False"
+	ConditionStatusUnknown ConditionStatus = "Unknown"
+)
